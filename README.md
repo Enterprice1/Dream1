@@ -10,9 +10,6 @@
 * Edit apidocs
   - npm run editdocs
 
-* Run unit test cases
-  - mocha test
-
 API Documentation
 
 http://localhost:8000/docs
