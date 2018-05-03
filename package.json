@@ -1,0 +1,34 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Bacancy Assignment",
+  "keywords": [],
+  "author": "Namdev Kendre",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.0",
+    "cookie": "^0.3.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.12.3",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.10.8",
+    "mongoose-paginate": "^5.0.3",
+    "ms": "^2.0.0",
+    "swagger-tools": "^0.10.3",
+    "underscore": "^1.8.3",
+    "winston": "^2.3.1",
+    "winston-daily-rotate-file": "^1.7.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "start": "node app.js",
+    "editdocs": "swagger_swagger_fileName=apidocs/swagger.yaml swagger project edit"
+  }
+}

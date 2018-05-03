@@ -1,0 +1,26 @@
+{
+	"development": {
+		"port": 8000,
+		"base_url": "http://localhost:8000/",
+		"database": {
+			"host": "localhost",
+			"user": "",
+			"password": "",
+			"port": "27017",
+			"dbName": "bacancy"
+		},
+		"superSecret": "bacancysecretkey"
+	},
+	"production": {
+		"port": 8000,
+		"base_url": "",
+		"database": {
+			"host": "",
+			"user": "",
+			"password": "",
+			"port": "",
+			"dbName": ""
+		},
+		"superSecret": "bacancysecretkey"
+	}
+}

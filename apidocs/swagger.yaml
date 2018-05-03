@@ -1,0 +1,192 @@
+swagger: "2.0"
+info:
+  description: "Bacancy api documentation"
+  version: "1.0.0"
+  title: "Bacancy"
+#   termsOfService: "http://swagger.io/terms/"
+#   contact:
+#     email: "apiteam@swagger.io"
+#   license:
+#     name: "Apache 2.0"
+#     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:8000"
+basePath: "/api/v1"
+schemes:
+- "http"
+securityDefinitions:
+  Bearer:
+    description: For accessing the API a valid token must be passed in all the queries
+    type: apiKey
+    name: x-access-token
+    in: header
+paths:
+  /signup:
+    post:
+      tags:
+      - "User"
+      summary: "Signup"
+      description: "Create account"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "firstName, lastName, username, email and password in body"
+        required: true
+        schema:
+          $ref: "#/definitions/signupSchema"
+      responses:
+        200:
+          description: "Signup successfully."
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Server Error"
+  /login:
+    post:
+      tags:
+      - "User"
+      summary: "Login"
+      description: "Login"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "username or email, password in body"
+        required: true
+        schema:
+          $ref: "#/definitions/loginSchema"
+      responses:
+        200:
+          description: "Login successfully."
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Server Error"
+  /users/profile:
+    get:
+      tags:
+      - "User"
+      summary: "UserDetails"
+      description: "User Details"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: "User operation"
+        500:
+          description: "Internal Server Error"
+  /users:
+    put:
+      tags:
+      - "User"
+      summary: "editProfile"
+      description: "Edit user profile"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "firstName, lastName, mobile in body"
+        required: true
+        schema:
+          $ref: "#/definitions/editSchema"
+      responses:
+        200:
+          description: "Profile updated successfully."
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Server Error"
+    delete:
+      tags:
+      - "User"
+      summary: "deleteAccount"
+      description: "Delete account"
+      produces:
+      - "application/json"
+      security:
+      - Bearer: []
+      responses:
+        200:
+          description: "user found successfully."
+        400:
+          description: "Bad Request"
+        500:
+          description: "Internal Server Error"
+  /users/search:
+    get:
+      tags:
+      - "User"
+      summary: "searchUser"
+      description: "Search user"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      parameters:
+      - in: "query"
+        name: "name"
+        description: "first name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "User operation"
+        500:
+          description: "Internal Server Error"
+
+definitions:
+  signupSchema:
+    type: "object"
+    required:
+    - "firstName"
+    - "lastName"
+    - "mobile"
+    - "username"
+    - "email"
+    - "password"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      mobile:
+        type: "number"
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+  loginSchema:
+    type: "object"
+    required:
+    - "username"
+    - "email"
+    - "password"
+    properties:
+      username:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+  editSchema:
+    type: "object"
+    required:
+    - "firstName"
+    - "lastName"
+    - "mobile"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      mobile:
+        type: "number"
